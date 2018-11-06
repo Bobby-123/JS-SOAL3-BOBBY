@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+
+    <title>Document</title>
+</head>
+<style>
+    table {
+        width : 60%;
+        border : 1px double;
+        border-collapse: collapse;
+    }
+    th, td {
+        height : 30px;
+        border : 1px double;
+        border-collapse: collapse;
+        text-align: center;
+    }
+</style>
+<body>
+    
+    <h5>Nama :</h3><input id="nama" type="text"/></h5>
+    <h5>Tgl Lahir :<input id="usia" type="date"></h5>
+    <h5>Kota :</h3><input id="kota" type="text"/></h5><br>
+    <button value="1234" onclick="klik()">S U B M I T</button><br>  
+    <br>
+    <button onclick="hapus()">HAPUS</button>
+    <table id="Table">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+    </table>
+  
+</body>
+<script>
+
+        function hapus() {  
+        document.getElementById("Table").deleteRow(-1)
+}
+        function klik(){
+
+            var bln = document.getElementById("usia").value.slice(5,7)
+            if(bln==01){
+                bln = "January"
+            }
+            else if(bln==02){
+                bln = "February"
+            }
+            else if(bln==03){
+                bln = "Maret"
+            }
+            else if(bln==04){
+                bln = "April"
+            }
+            else if(bln==05){
+                bln = "Mei"
+            }
+            else if(bln==06){
+                bln = "Juni"
+            }
+            else if(bln==07){
+                bln = "Juli"
+            }
+            else if(bln==08){
+                bln = "Agustus"
+            }
+            else if(bln==09){
+                bln = "September"
+            }
+            else if(bln==10){
+                bln = "Oktober"
+            }
+            else if(bln==11){
+                bln = "November"
+            }
+            else if(bln==12){
+                bln = "Desember"
+            }
+            else{
+                bln = ""
+            }
+
+            var tanggal = parseInt(document.getElementById("usia").value.slice(8,10))
+            var zodiac = ""
+
+            if(tanggal>=20 && bln == 03 && bln == 04){
+                zodiac = "Pisces"
+            }
+            else{
+                zodiac = "gatau"
+            }
+            
+            var x = new Date()
+            var tahun = x.getFullYear()
+            var umur = (x.getFullYear())-parseInt(document.getElementById("usia").value.slice(0,4))
+            var pensiun = 55 - umur
+
+            document.getElementById("tbody").innerHTML += 
+            "<tr><td>"+ document.getElementById("nama").value+"</td><td>"+  
+            document.getElementById("usia").value.slice(8,10)+"</td><td>"+  
+            bln+"</td><td>"+document.getElementById("usia").value.slice(0,4)+"</td><td>"+
+            document.getElementById("kota").value+"</td><td>"+umur+"</td><td>"+pensiun+"</td></tr>"
+
+            document.getElementById("thead").innerHTML = 
+            "<tr><th>Nama</th><th>Tanggal Lahir</th><th>Bulan Lahir</th><th>Tahun Lahir</th><th>Kota</th><th>Usia</th><th>Pensiun</th></tr>"
+            
+            
+}
+</script>
+</html>
